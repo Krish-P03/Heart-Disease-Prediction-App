@@ -7,8 +7,8 @@ import numpy as np
 import altair as alt
 import subprocess
 
-MODEL_PATH = 'models/model.pkl'
-USER_DATA_PATH = 'models/user_inputs.csv'
+MODEL_PATH = 'model.pkl'
+USER_DATA_PATH = 'user_inputs.csv'
 RETRAIN_TRIGGER = 10
 
 
@@ -30,9 +30,9 @@ def retrain_if_needed():
         return
     df = pd.read_csv(USER_DATA_PATH)
     if len(df) >= RETRAIN_TRIGGER:
-        orig = pd.read_csv('data/heart.csv')
+        orig = pd.read_csv('heart.csv')
         merged = pd.concat([orig, df], ignore_index=True)
-        merged.to_csv('data/heart.csv', index=False)
+        merged.to_csv('heart.csv', index=False)
         subprocess.run(['python', 'preprocess_and_train.py'])
 
 
