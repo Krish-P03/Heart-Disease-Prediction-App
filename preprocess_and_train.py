@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from matplotlib.ticker import MaxNLocator
 
-df = pd.read_csv('data/heart.csv')
+df = pd.read_csv('heart.csv')
 non_numeric = df.select_dtypes(include=['object']).columns.tolist()
 if 'date' in non_numeric:
     df = df.drop(columns=['date'])
